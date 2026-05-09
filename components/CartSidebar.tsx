@@ -5,7 +5,7 @@ import { useStore } from "@/context/StoreContext";
 
 export default function CartSidebar() {
   const { cart, cartOpen, setCartOpen, removeFromCart, updateQty, cartTotal, checkout } = useStore();
-  const [checkoutState, setCheckoutState] = useState(null); // null | "processing" | "success" | "error"
+  const [checkoutState, setCheckoutState] = useState<string | null>(null); // null | "processing" | "success" | "error"
   const [errorMsg, setErrorMsg] = useState("");
 
   const handleCheckout = async () => {
