@@ -1,9 +1,10 @@
 "use client";
 import { ShoppingBag } from "lucide-react";
 import { useStore } from "@/context/StoreContext";
+import type { Product } from "@/context/StoreContext";
 import { useState } from "react";
 
-export default function ProductCard({ product }) {
+export default function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useStore();
   const [added, setAdded] = useState(false);
 
