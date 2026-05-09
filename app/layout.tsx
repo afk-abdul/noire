@@ -1,4 +1,5 @@
 import "./globals.css";
+import { ReactNode } from "react";
 import StoreProvider from "@/context/StoreContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -12,7 +13,7 @@ export const metadata = {
   icons: { icon: "/favicon.ico" },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="grain-bg">
