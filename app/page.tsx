@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <div className="page-enter">
       {/* Global Animation Styles */}
-      <style dangerouslySetInlineStyle={{
+      <style dangerouslySetInnerHTML={{
         __html: `
           @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
@@ -218,7 +218,7 @@ export default function HomePage() {
               }}
             >
               <img 
-                src="/makeup.png" 
+                src="/products/makeup.png" 
                 alt="Makeup products" 
                 className="image-hover-zoom"
                 style={{ 
@@ -329,13 +329,13 @@ export default function HomePage() {
       <section style={{ padding: "0 32px 100px", maxWidth: 1280, margin: "0 auto" }}>
          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 32 }}>
             <div className="animate-reveal" style={{ overflow: "hidden", position: "relative", height: 400, borderRadius: 2 }}>
-               <img src="/cream-blush-set.png" alt="Cream Blush and Accessories" className="image-hover-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+               <img src="/products/cream-blush-set.png" alt="Cream Blush and Accessories" className="image-hover-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: 24, background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
                  <p style={{ fontFamily: "'Playfair Display', serif", color: "#FFF", fontSize: 24 }}>Signature Cream Blush</p>
                </div>
             </div>
             <div className="animate-reveal" style={{ overflow: "hidden", position: "relative", height: 400, borderRadius: 2, animationDelay: "0.2s" }}>
-               <img src="/liquid-eyeliner-model.png" alt="Model applying eyeliner" className="image-hover-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+               <img src="/products/liquid-eyeliner-model.png" alt="Model applying eyeliner" className="image-hover-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: 24, background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
                  <p style={{ fontFamily: "'Playfair Display', serif", color: "#FFF", fontSize: 24 }}>Precision Liquid Eyeliner</p>
                </div>
