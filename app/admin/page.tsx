@@ -18,6 +18,7 @@ export default function AdminPage() {
   const [activeTab, setActiveTab] = useState("products");
   const fileRef = useRef<HTMLInputElement>(null);
 
+  console.log("Products in Store:", products);
   const handleImageUpload = (file: File | undefined) => {
     if (!file) return;
     const reader = new FileReader();

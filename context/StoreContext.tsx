@@ -36,46 +36,40 @@ interface StoreContextType {
 const StoreContext = createContext<StoreContextType | null>(null);
 
 const DEFAULT_PRODUCTS = [
-  { id: "1", name: "Concealer", price: 8500, stock: 10, category: "Face", image: null, description: "Lightweight, buildable coverage that blends seamlessly." },
-  { id: "2", name: "Compact Powder", price: 12000, stock: 8, category: "Face", image: null, description: "Finely milled powder for a flawless, matte finish." },
-  { id: "3", name: "Cream Blush", price: 9000, stock: 12, category: "Cheeks", image: null, description: "Dewy, natural flush in a smooth cream formula." },
-  { id: "4", name: "Eyeliner", price: 8000, stock: 15, category: "Eyes", image: null, description: "Precision tip for sharp, long-lasting lines." },
-  { id: "5", name: "Mascara", price: 7000, stock: 20, category: "Eyes", image: null, description: "Volumizing formula for dramatic, full lashes." },
-  { id: "6", name: "Lip Balm", price: 5000, stock: 25, category: "Lips", image: null, description: "Nourishing tint with a satin finish." },
-  { id: "7", name: "Eyeshadow Palette", price: 17000, stock: 6, category: "Eyes", image: null, description: "12 curated shades from nude to smoky." },
-  { id: "8", name: "Blush", price: 7000, stock: 18, category: "Cheeks", image: null, description: "Silky powder blush with a natural radiance." },
-  { id: "9", name: "Setting Mist", price: 6000, stock: 14, category: "Face", image: null, description: "Lightweight mist to lock in your look." },
-  { id: "10", name: "Lip Stick", price: 10000, stock: 16, category: "Lips", image: null, description: "Rich pigment in a comfortable satin formula." },
-  { id: "11", name: "Primer", price: 7000, stock: 11, category: "Face", image: null, description: "Pore-minimizing base for extended wear." },
-  { id: "12", name: "Lip Gloss", price: 11000, stock: 9, category: "Lips", image: null, description: "High-shine, non-sticky formula with a plumping effect." },
-  { id: "13", name: "Foundation", price: 15000, stock: 7, category: "Face", image: null, description: "Buildable, breathable coverage with SPF 20." },
+  { id: "1", name: "Concealer", price: 8500, stock: 10, category: "Face", image: "/products/foundation.png", description: "Lightweight, buildable coverage that blends seamlessly." },
+  { id: "2", name: "Compact Powder", price: 12000, stock: 8, category: "Face", image: "/products/compact-powder.png", description: "Finely milled powder for a flawless, matte finish." },
+    { id: "3", name: "Foundation", price: 15000, stock: 7, category: "Face", image: "/products/foundation.png", description: "Buildable, breathable coverage with SPF 20." },
+
+  { id: "4", name: "Eyeliner", price: 8000, stock: 15, category: "Eyes", image: "/products/eyeliner.png", description: "Precision tip for sharp, long-lasting lines." },
+  { id: "5", name: "Mascara", price: 7000, stock: 20, category: "Eyes", image: "/products/mascara.png", description: "Volumizing formula for dramatic, full lashes." },
+  { id: "6", name: "Lip Balm", price: 5000, stock: 25, category: "Lips", image: "/products/lip-balm.png", description: "Nourishing tint with a satin finish." },
+  { id: "7", name: "Eyeshadow Palette", price: 17000, stock: 6, category: "Eyes", image: "/products/eyeshadow.png", description: "12 curated shades from nude to smoky." },
+  { id: "8", name: "Blush", price: 7000, stock: 18, category: "Cheeks", image: "/products/blush.png", description: "Silky powder blush with a natural radiance." },
+  { id: "9", name: "Setting Mist", price: 6000, stock: 14, category: "Face", image: "/products/setting.png", description: "Lightweight mist to lock in your look." },
+  { id: "10", name: "Lip Stick", price: 10000, stock: 16, category: "Lips", image: "/products/lipstick.png", description: "Rich pigment in a comfortable satin formula." },
+  { id: "11", name: "Primer", price: 7000, stock: 11, category: "Face", image: "/products/primer.png", description: "Pore-minimizing base for extended wear." },
+  { id: "12", name: "Lip Gloss", price: 11000, stock: 9, category: "Lips", image: "/products/lip-gloss.png", description: "High-shine, non-sticky formula with a plumping effect." },
+    { id: "13", name: "Cream Blush", price: 9000, stock: 12, category: "Cheeks", image: "/products/cream-blush.png", description: "Dewy, natural flush in a smooth cream formula." },
+
 ];
 
 export default function StoreProvider({ children }: { children: ReactNode }) {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>(DEFAULT_PRODUCTS);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [cartOpen, setCartOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     try {
-      const storedProducts = localStorage.getItem("noire_products");
       const storedCart = localStorage.getItem("noire_cart");
-      setProducts(storedProducts ? JSON.parse(storedProducts) : DEFAULT_PRODUCTS);
       setCart(storedCart ? JSON.parse(storedCart) : []);
     } catch {
-      setProducts(DEFAULT_PRODUCTS);
       setCart([]);
     }
     setMounted(true);
   }, []);
 
-  useEffect(() => {
-    if (mounted) {
-      localStorage.setItem("noire_products", JSON.stringify(products));
-    }
-  }, [products, mounted]);
-
+  // Update localStorage only for cart
   useEffect(() => {
     if (mounted) {
       localStorage.setItem("noire_cart", JSON.stringify(cart));
