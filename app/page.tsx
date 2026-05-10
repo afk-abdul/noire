@@ -10,6 +10,31 @@ export default function HomePage() {
 
   return (
     <div className="page-enter">
+      {/* Global Animation Styles */}
+      <style dangerouslySetInlineStyle={{
+        __html: `
+          @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+          }
+          .image-hover-zoom {
+            transition: transform 0.6s ease, opacity 0.6s ease;
+          }
+          .image-hover-zoom:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+          }
+          .animate-reveal {
+            animation: fadeInUp 1.2s ease-out forwards;
+          }
+        `
+      }} />
+
       {/* Hero Section */}
       <section
         style={{
@@ -61,7 +86,7 @@ export default function HomePage() {
         />
 
         {/* Content */}
-        <div style={{ textAlign: "center", maxWidth: 700, position: "relative", zIndex: 1 }}>
+        <div style={{ textAlign: "center", maxWidth: 700, position: "relative", zIndex: 1, animation: "fadeInUp 1s ease-out" }}>
           {/* Logo mark */}
           <div
             style={{
@@ -75,6 +100,7 @@ export default function HomePage() {
               background: "white",
               margin: "0 auto 40px",
               boxShadow: "0 4px 24px rgba(28,28,28,0.06)",
+              animation: "float 6s ease-in-out infinite"
             }}
           >
             <span
@@ -179,7 +205,7 @@ export default function HomePage() {
           className="responsive-grid"
         >
           {/* Image side */}
-          <div style={{ position: "relative" }}>
+          <div style={{ position: "relative", animation: "fadeInUp 1.2s ease-out" }}>
             <div
               style={{
                 height: 520,
@@ -188,8 +214,22 @@ export default function HomePage() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                overflow: "hidden"
               }}
             >
+              <img 
+                src="/makeup.png" 
+                alt="Makeup products" 
+                className="image-hover-zoom"
+                style={{ 
+                  width: "100%", 
+                  height: "100%", 
+                  objectFit: "cover",
+                  position: "absolute",
+                  mixBlendMode: "multiply", 
+                  opacity: 0.85
+                }} 
+              />
               <div
                 style={{
                   width: 180,
@@ -278,11 +318,29 @@ export default function HomePage() {
             >
               Every formula is crafted to blend seamlessly, last effortlessly, and make you feel confidently, beautifully you.
             </p>
-            <Link href="/shop" className="btn-outline">
+            <Link href="/shop" className="btn-outline" style={{ display: "inline-block", transition: "transform 0.3s ease" }} onMouseEnter={(e) => e.currentTarget.style.transform = "translateY(-3px)"} onMouseLeave={(e) => e.currentTarget.style.transform = "translateY(0)"}>
               Explore Collection
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Featured Images Showcase Section */}
+      <section style={{ padding: "0 32px 100px", maxWidth: 1280, margin: "0 auto" }}>
+         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 32 }}>
+            <div className="animate-reveal" style={{ overflow: "hidden", position: "relative", height: 400, borderRadius: 2 }}>
+               <img src="/cream-blush-set.png" alt="Cream Blush and Accessories" className="image-hover-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: 24, background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
+                 <p style={{ fontFamily: "'Playfair Display', serif", color: "#FFF", fontSize: 24 }}>Signature Cream Blush</p>
+               </div>
+            </div>
+            <div className="animate-reveal" style={{ overflow: "hidden", position: "relative", height: 400, borderRadius: 2, animationDelay: "0.2s" }}>
+               <img src="/liquid-eyeliner-model.png" alt="Model applying eyeliner" className="image-hover-zoom" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+               <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, padding: 24, background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
+                 <p style={{ fontFamily: "'Playfair Display', serif", color: "#FFF", fontSize: 24 }}>Precision Liquid Eyeliner</p>
+               </div>
+            </div>
+         </div>
       </section>
 
       {/* Featured products */}
