@@ -38,11 +38,12 @@ const StoreContext = createContext<StoreContextType | null>(null);
 const DEFAULT_PRODUCTS = [
   { id: "1", name: "Concealer", price: 8500, stock: 10, category: "Face", image: "/products/foundation.png", description: "Lightweight, buildable coverage that blends seamlessly." },
   { id: "2", name: "Compact Powder", price: 12000, stock: 8, category: "Face", image: "/products/compact-powder.png", description: "Finely milled powder for a flawless, matte finish." },
-    { id: "3", name: "Foundation", price: 15000, stock: 7, category: "Face", image: "/products/foundation.png", description: "Buildable, breathable coverage with SPF 20." },
+     { id: "3", name: "Lip Balm", price: 5000, stock: 25, category: "Lips", image: "/products/lip-balm.png", description: "Nourishing tint with a satin finish." },
 
   { id: "4", name: "Eyeliner", price: 8000, stock: 15, category: "Eyes", image: "/products/eyeliner.png", description: "Precision tip for sharp, long-lasting lines." },
   { id: "5", name: "Mascara", price: 7000, stock: 20, category: "Eyes", image: "/products/mascara.png", description: "Volumizing formula for dramatic, full lashes." },
-  { id: "6", name: "Lip Balm", price: 5000, stock: 25, category: "Lips", image: "/products/lip-balm.png", description: "Nourishing tint with a satin finish." },
+
+   { id: "6", name: "Foundation", price: 15000, stock: 7, category: "Face", image: "/products/foundation.png", description: "Buildable, breathable coverage with SPF 20." },
   { id: "7", name: "Eyeshadow Palette", price: 17000, stock: 6, category: "Eyes", image: "/products/eyeshadow.png", description: "12 curated shades from nude to smoky." },
   { id: "8", name: "Blush", price: 7000, stock: 18, category: "Cheeks", image: "/products/blush.png", description: "Silky powder blush with a natural radiance." },
   { id: "9", name: "Setting Mist", price: 6000, stock: 14, category: "Face", image: "/products/setting.png", description: "Lightweight mist to lock in your look." },
